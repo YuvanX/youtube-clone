@@ -40,7 +40,7 @@ function NavBar() {
         <div className='flex items-center space-x-6'>
             <RiVideoAddLine className='text-2xl cursor-pointer hidden md:block'/>
             <AiOutlineBell className='text-2xl cursor-pointer hidden md:block'/>
-            <img src={profile} alt="profile" className='h-8 rounded-full cursor-pointer' />
+            <img src={profile} alt="profile" className='h-8 rounded-full cursor-pointer hidden md:block' />
             
         </div>
     </div>

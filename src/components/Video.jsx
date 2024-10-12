@@ -12,7 +12,7 @@ const Video = ({ video }) => {
           <img
             src={video?.snippet.thumbnails.medium.url}
             alt=""
-            className="h-80 md:h-56 rounded-xl hover:rounded-none "
+            className="h-52 md:h-56 rounded-xl hover:rounded-none "
           />
           <div>
             <div className="font-semibold ml-2 line-clamp-2">
