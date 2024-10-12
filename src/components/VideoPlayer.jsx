@@ -59,7 +59,7 @@ const VideoPlayer = () => {
               <div className="font-bold text-xl mt-2">
                 {video[0]?.snippet?.title}
               </div>
-              <div className="flex space-x-7">
+              <div className="flex text-sm space-x-2 md:space-x-7">
                 <div>
                   <div className="font-semibold mt-2">
                     {video[0]?.snippet?.channelTitle}
@@ -68,7 +68,7 @@ const VideoPlayer = () => {
                     2.0M subscribers
                   </div>
                 </div>
-                <div className="bg-red-600 text-sm flex justify-center items-center rounded-r-full rounded-l-full px-2 w-28 text-white mt-2">
+                <div className="bg-red-600 text-sm flex justify-center items-center rounded-r-full rounded-l-full px-2 w-20 md:w-28 text-white mt-2">
                   Subscribe
                 </div>
                 <div className="space-x-1 flex items-center bg-gray-100  rounded-r-full rounded-l-full w-24 px-3 mt-2">
