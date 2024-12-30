@@ -17,7 +17,7 @@ const NavBar = () => {
         <div className="flex gap-4 items-center cursor-pointer">
           <button onClick={() => navigate(-1)}><RiPlanetLine color={hovered? "#D8C4B6" : "white"} size={28} onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}/></button>
-          <div className="bg-gray-700 w-[285px] md:w-[350px] xl:w-[500px] rounded-l-full rounded-r-full">
+          <div className="bg-gray-700 w-[280px] md:w-[350px] xl:w-[500px] rounded-l-full rounded-r-full">
             <div className="flex items-center">
               <div className="mr-1 ml-2">
                 <RiSearchLine color="gray" size={18} />
