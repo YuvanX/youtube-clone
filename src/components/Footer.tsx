@@ -7,9 +7,9 @@ const Footer = () => {
         <div>
           <RiArrowRightUpLine size={40} />
         </div>
-        <a href="https://github.com/YuvanX/youtube-clone">Source code</a>
+        <a className="text-md md:text-lg" href="https://github.com/YuvanX/youtube-clone">Source code</a>
       </div>
-      <div className="text-lg font-normal">Made by AbhiVignesh</div>
+      <div className="text-md md:text-lg font-normal">Made by AbhiVignesh</div>
     </div>
   );
 };
