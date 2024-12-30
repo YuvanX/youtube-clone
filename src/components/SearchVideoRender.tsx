@@ -2,7 +2,7 @@ import axios from 'axios';
 import  { useEffect, useState } from 'react'
 import { API_KEY } from './VideoDisplay';
 import VideoCard from './VideoCard';
-import Loader from './Loader';
+
 type Video = {
     id:string;
       snippet: {

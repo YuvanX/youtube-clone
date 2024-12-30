@@ -1,4 +1,4 @@
-import { RiGameFill, RiGameLine, RiGamepadFill, RiGamepadLine, RiHomeLine } from "@remixicon/react";
+import {  RiGameLine, RiHomeLine } from "@remixicon/react";
 import { useNavigate } from "react-router-dom";
 
 const Feed = () => {
