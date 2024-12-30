@@ -5,6 +5,8 @@ import axios from "axios";
 import { API_KEY } from "../components/VideoDisplay";
 import formatIndianNumber from "../utils/numberformat";
 import VideoCard from "../components/VideoCard";
+import Footer from "../components/Footer";
+import Loader from "../components/Loader";
 
 type Video = {
   id: string;
@@ -28,6 +30,7 @@ const PlayingVideo = () => {
   const { id } = useParams();
   const [video, setVideo] = useState<Video[]>([]);
   const [relatedVideo, setRelatedVideo] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetch = async () => {
@@ -35,6 +38,7 @@ const PlayingVideo = () => {
         `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&maxResults=15&key=${API_KEY}`
       );
       setVideo(res.data.items);
+      setLoading(false)
     };
     fetch();
   }, [id]);
@@ -53,7 +57,7 @@ const PlayingVideo = () => {
   return (
     <div className="h-screen w-full">
       <NavBar />
-      <div className="pt-28 bg-gray-800 min-h-screen px-10 lg:px-52 relative w-full pb-5">
+      {loading? <Loader/> : <div className="pt-28 bg-gray-800 min-h-screen px-10 lg:px-52 relative w-full pb-5">
         <iframe
           className="w-full aspect-video rounded-lg"
           src={`https://www.youtube.com/embed/${id}`}
@@ -89,7 +93,9 @@ const PlayingVideo = () => {
             );
           })}
         </div>
-      </div>
+      <Footer/>
+      </div>}
+      
     </div>
   );
 };
