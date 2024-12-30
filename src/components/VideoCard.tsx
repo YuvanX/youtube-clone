@@ -1,32 +1,20 @@
 import { formatDistanceToNow } from "date-fns";
 import formatIndianNumber from "../utils/numberformat";
+import { Link } from "react-router-dom";
 
-type Video = {
-    snippet: {
-        thumbnails: {
-            maxres?: {
-                url: string;
-            };
-        };
-        title: string;
-        publishedAt: string;
-        channelName: string;
-    };
-    statistics: {
-        viewCount: string;
-    };
-};
-const VideoCard: React.FC<{ thumbnail?: string; title: string; views: string; days: string; channelName: string }> = ({thumbnail, title, views, days, channelName}) => {
+
+const VideoCard: React.FC<{ thumbnail?: string; title: string; views: string; days: string; channelName: string; id: string }> = ({thumbnail, title, views, days, channelName, id}) => {
   return (
-    <div className="mt-8">
+    <Link to={`/${id}`}>
+    <div className="mt-5 transform transition duration-300 hover:scale-105">
         <div>
             <div>
-                <img src={!thumbnail? "https://i.ytimg.com/vi/5FlveALbzFk/maxresdefault.jpg": thumbnail} className="rounded-lg"  />
+                <img src={!thumbnail? "https://i.ytimg.com/vi/5FlveALbzFk/maxresdefault.jpg": thumbnail} className="rounded-lg cursor-pointer"  />
             </div>
-            <div className="text-white font-space text-lg pt-1">
+            <div className="text-white font-space text-sm md:text-lg pt-1">
                 {title}
             </div>
-            <div className="text-white font-space text-sm">
+            <div className="text-white font-space text-xs md:text-sm">
                 {channelName}
             </div>
             <div className="flex text-gray-50 font-space text-xs pt-1 items-center">
@@ -37,11 +25,12 @@ const VideoCard: React.FC<{ thumbnail?: string; title: string; views: string; da
                 ●
                 </div>
                 <div>
-                    {formatDistanceToNow(new Date(days), { addSuffix: true })}
+                    {days? formatDistanceToNow(new Date(days), { addSuffix: true }) : 2}
                 </div>
             </div>
         </div>
     </div>
+     </Link>
   )
 }
 

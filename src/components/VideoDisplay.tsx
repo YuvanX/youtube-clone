@@ -1,10 +1,11 @@
-import axios from "axios";
-import { useEffect, useState } from "react"
+
 import VideoCard from "./VideoCard";
 export const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 type Video = {
+  id:string;
     snippet: {
+      categoryId: string;
       thumbnails: {
         maxres?: {
           url: string;
@@ -19,22 +20,17 @@ type Video = {
     };
   };
   
+  type Feed= {
+    videoData: Video[]
+  }
 
-const VideoDisplay = () => {
-    const [videoData, setVideoData] = useState<Video[]>([]);
-
-    useEffect(() => {
-        const fetch = async () => {
-            const res = await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=US&key=${API_KEY}`)
-            setVideoData(res.data.items)
-        }
-        fetch()
-    }, [])
+const VideoDisplay = ({videoData}: Feed) => {
+    
   return (
-    <div className="grid grid-cols-3 gap-7">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 relative">
         {videoData.map((video) => {
             return <div>
-                <VideoCard thumbnail={video?.snippet?.thumbnails?.maxres?.url} title={video?.snippet?.title} views={video?.statistics?.viewCount} days={video?.snippet?.publishedAt} channelName={video?.snippet?.channelTitle}/>
+                <VideoCard key={video?.id} id={video?.id} thumbnail={video?.snippet?.thumbnails?.maxres?.url} title={video?.snippet?.title} views={video?.statistics?.viewCount} days={video?.snippet?.publishedAt} channelName={video?.snippet?.channelTitle}/>
             </div>
         })}
     </div>
